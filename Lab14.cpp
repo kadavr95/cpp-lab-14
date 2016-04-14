@@ -2,14 +2,16 @@
 #include <iostream.h>
 #include <string>//string type part
 
-void StringCheck(string StringInput, bool *Result);
+void StringCheck(string StringInput, bool *Result);//functions prototypes
+void SpaceRemoval(string *StringInput);
 
 void main()//main function
 {
 	string StringInput;//define variables
 	bool Result=true;
 	cout<<"Enter string\n";//string input
-	cin>>StringInput;
+	getline(cin,StringInput);
+	SpaceRemoval(&StringInput);//delete all spaces in string
 	StringCheck(StringInput, &Result);//check if string is palindrome or not
 	if (Result)//output result
 		cout<<"\nString is palindrome";
@@ -18,7 +20,16 @@ void main()//main function
 	getch();//wait for user reaction
 }
 
-void StringCheck(string StringInput, bool *Result)
+void SpaceRemoval(string *StringInput)//delete all spaces in string
+{
+	string::size_type SymbolPosition;
+	while ((SymbolPosition=(*StringInput).find(" "))!=string::npos)//while space symbol is in string
+	{
+		(*StringInput).erase(SymbolPosition,1);//delete space symbol
+	}
+}
+
+void StringCheck(string StringInput, bool *Result)//check if string is palindrome or not
 {
 	int StringLength;
 	string StringSymbolFirst,StringSymbolLast;
