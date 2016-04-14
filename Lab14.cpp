@@ -23,7 +23,7 @@ void main()//main function
 void SpaceRemoval(string *StringInput)//delete all spaces in string
 {
 	string::size_type SymbolPosition;
-	while ((SymbolPosition=(*StringInput).find(" "))!=string::npos)//while space symbol is in string
+	while ((SymbolPosition=(*StringInput).find(" "))!=string::npos)//while space symbol is in string  //string::npos actually is -1
 	{
 		(*StringInput).erase(SymbolPosition,1);//delete space symbol
 	}
